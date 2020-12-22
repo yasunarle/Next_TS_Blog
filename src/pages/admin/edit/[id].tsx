@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { NextPage } from 'next'
+import React, { useState, useEffect, FC } from 'react'
 import { useRouter } from 'next/router'
 // API
-import { getPost } from '../../data/api/post'
+import { getPost } from '../../../data/api/post'
 
-const PostPage = () => {
+const PostEditPage: FC = () => {
   const router = useRouter()
   // State
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -35,7 +34,14 @@ const PostPage = () => {
   return (
     <div className="container">
       <div className="container__content">
-        <h2>PostPage</h2>
+        <a
+          onClick={() => {
+            router.push('/admin')
+          }}
+        >
+          Go Back Admin Home
+        </a>
+        <h3 className="pt">PostEdit</h3>
         {post ? (
           <div>
             <h3>{post.title}</h3>
@@ -48,4 +54,4 @@ const PostPage = () => {
     </div>
   )
 }
-export default PostPage
+export default PostEditPage
